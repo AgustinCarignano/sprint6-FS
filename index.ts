@@ -1,11 +1,10 @@
-import fs from "fs";
+import * as fs from "fs";
 
 //Extracted data from .txt file
 const data = fs.readFileSync("./countries.txt", "utf-8");
 
 //String data converted to an array
-const dataArray = data.split(`
-`);
+const dataArray = data.split("\n");
 
 //Structures to build the new data
 const header = ["country", "population", "area", "density"];
@@ -59,8 +58,7 @@ correctCountries.sort((a, b) => {
 
 //Data converted to a string
 const finalList = [header, ...correctCountries, ...incorrectCountries];
-const newCountryList = finalList.join(`
-`);
+const newCountryList = finalList.join("\n");
 
 //Create a new .csv file
 fs.writeFileSync("countries.csv", newCountryList);
